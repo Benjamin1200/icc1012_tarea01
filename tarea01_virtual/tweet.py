@@ -14,7 +14,10 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_key, access_secret)
 api = tweepy.API(auth)
 
+# Postgresql schema.
 # The table schema: CREATE TABLE tweets (id SERIAL PRIMARY KEY, tweet_id BIGINT NOT NULL, created_at VARCHAR NOT NULL, timestamp_ms TIMESTAMP, text VARCHAR NOT NULL, place_name VARCHAR, place_country VARCHAR, user_screen_name VARCHAR NOT NULL, user_id BIGINT NOT NULL, user_location VARCHAR, user_followers_count INTEGER NOT NULL, user_friends_count INTEGER NOT NULL )
+
+# Example of tweet from tweepy in json.
 
 #{"created_at":"Sat Aug 20 20:58:47 +0000 2016","id":767103611033780229, "text":"In the news: Australian athletes in Rio released by police after agreeing to fine https:\/\/t.co\/HCzKuEngb0", "in_reply_to_status_id":null,"in_reply_to_user_id":null,"in_reply_to_screen_name":null,
 # "user":{"id":1954280094,"id_str":"1954280094","name":"The Bangor Insider","screen_name":"BangorInsider","location":"Bangor, Maine","url":"http:\/\/www.bangorinsider.com","description":"The Bangor Region's Online News Portal. Promoting Our Local Media.","protected":false,"verified":false,"followers_count":359,"friends_count":45,"listed_count":37,"favourites_count":2,"statuses_count":136150,"created_at":"Fri Oct 11 14:31:08 +0000 2013","utc_offset":null,"time_zone":null,"geo_enabled":false,"lang":"en","contributors_enabled":false,"default_profile":true,"default_profile_image":false,"following":null,"follow_request_sent":null,"notifications":null},

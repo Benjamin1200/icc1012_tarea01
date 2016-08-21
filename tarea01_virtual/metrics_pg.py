@@ -3,6 +3,10 @@ import psycopg2
 
 # The table schema: CREATE TABLE tweets (id SERIAL PRIMARY KEY, tweet_id BIGINT NOT NULL, created_at VARCHAR NOT NULL, timestamp_ms TIMESTAMP, text VARCHAR NOT NULL, coordinates VARCHAR, place_name VARCHAR, place_country VARCHAR, user_screen_name VARCHAR NOT NULL, user_id BIGINT NOT NULL, user_location VARCHAR, user_followers_count INTEGER NOT NULL, user_friends_count INTEGER NOT NULL )
 
+# The indexes to be created:
+# CREATE INDEX timestamp_index on tweets (TIMESTAMP_MS);
+# CREATE INDEX place_country_index on tweets (PLACE_COUNTRY);
+
 def initialize_connection():
     # Postgresql initialization
     connection = psycopg2.connect("dbname=tarea01 user=postgres password=postgres host=localhost")

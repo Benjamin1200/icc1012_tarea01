@@ -1,6 +1,7 @@
 import time
 import pymongo
-import datetime
+
+# Example of json from tweepy.
 
 #{"created_at":"Sat Aug 20 20:58:47 +0000 2016","id":767103611033780229, "text":"In the news: Australian athletes in Rio released by police after agreeing to fine https:\/\/t.co\/HCzKuEngb0", "in_reply_to_status_id":null,"in_reply_to_user_id":null,"in_reply_to_screen_name":null,
 # "user":{"id":1954280094,"id_str":"1954280094","name":"The Bangor Insider","screen_name":"BangorInsider","location":"Bangor, Maine","url":"http:\/\/www.bangorinsider.com","description":"The Bangor Region's Online News Portal. Promoting Our Local Media.","protected":false,"verified":false,"followers_count":359,"friends_count":45,"listed_count":37,"favourites_count":2,"statuses_count":136150,"created_at":"Fri Oct 11 14:31:08 +0000 2013","utc_offset":null,"time_zone":null,"geo_enabled":false,"lang":"en","contributors_enabled":false,"default_profile":true,"default_profile_image":false,"following":null,"follow_request_sent":null,"notifications":null},
@@ -16,6 +17,14 @@ import datetime
 # "place":{"id":"4029837e46e8e369","url":"https:\/\/api.twitter.com\/1.1\/geo\/id\/4029837e46e8e369.json","place_type":"city","name":"Nova Igua\u00e7u","full_name":"Nova Igua\u00e7u, Brasil","country_code":"BR","country":"Brasil",
 #   "bounding_box":{"type":"Polygon","coordinates":[[[-43.681932,-22.865838],[-43.681932,-22.527218],[-43.366801,-22.527218],[-43.366801,-22.865838]]]},
 #   "attributes":{}},
+
+# To change timestamps to ISODate:
+# var cursor = db.tweets.find()
+# while(cursor.hasNext()){ var doc = cursor.next(); db.tweets.update({_id : doc._id}, {$set : {timestamp_ms : new Date(NumberLong(doc.timestamp_ms))}}) }
+
+# The indexes to be created:
+# db.tweets.createIndex({timestamp_ms: 1 })
+# db.tweets.createIndex({"place.country": 1})
 
 
 def initialize_connection():
