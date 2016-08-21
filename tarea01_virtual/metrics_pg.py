@@ -59,12 +59,14 @@ def get_tweet_location_statics(cursor):
         print "{0}% of all the tweets (with country) about {1}, were from {2}".format(round(float(tweets_location[0])/tweets_amount, 4)*100, topic, tweets_location[1])
 
 def get_average_of_followers(cursor):
+    # This counts the same user if it post another tweet about the topic, making the average higher or lower.
+    # But is okay, since this is to know the average followers per tweet not user.
     topic = "Rio"
     cursor.execute("SELECT COUNT(*) FROM TWEETS;")
     amount_of_tweets = cursor.fetchone()[0]
     cursor.execute("SELECT SUM(USER_FOLLOWERS_COUNT) FROM TWEETS;")
     total_followers = cursor.fetchone()[0]
-    print "The average of followers of every user that creates a tweet about {0}, is: {1}".format(topic, round(float(total_followers)/amount_of_tweets, 2) )
+    print "The average of followers per tweet of every user that creates a tweet about {0}, is: {1}".format(topic, round(float(total_followers)/amount_of_tweets, 2) )
 
 connection = initialize_connection()
 
